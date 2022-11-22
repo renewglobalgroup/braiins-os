@@ -21,6 +21,7 @@ purposes. See deployment for notes on how to deploy the project on a live system
 
 The build system is written for *Python 3.5*. The only prerequisites are:
 
+* [OpenWrt](https://www.linux4sam.org/bin/view/Linux4SAM/OpenWrt)
 * Python 3.5.x
 * virtualenv 15.x.x
 * pip3 9.x.x
