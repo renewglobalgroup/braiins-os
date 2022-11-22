@@ -935,11 +935,15 @@ class Builder:
 
         # prepare arguments for build
         args = ['make', '-j{}'.format(self._config.build.jobs)]
-        if self._config.build.verbose == 'yes':
-            args.append('V=s')
+        args.append('V=s')
+        # if self._config.build.verbose == 'yes':
+        #     args.append('V=s')
         if targets:
             aliases = self._config.build.aliases
-            args.extend('{}/install'.format(aliases[target]) for target in targets)
+            # manually append aliases
+            args.append('{}/install'.format(aliases['kernel']))
+            args.append('{}/install'.format(aliases['cgminer']))
+            # args.extend('{}/install'.format(aliases[target]) for target in targets)
         # run make to build whole LEDE
         # set umask to 0022 to fix issue with incorrect root fs access rights
         self._run(args, path=path, init=partial(os.umask, 0o0022))
